@@ -14,10 +14,7 @@ export const bot_handler = async (event, context) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                message: "Hello World",
-                response,
-                replyResponse,
-                message,
+                message: "Hello World it is working",
             })
         };
     } catch (error) {
