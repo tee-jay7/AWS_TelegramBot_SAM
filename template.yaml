@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda-telegrambot-function
+
+Resources:
+  MainFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: src/main.bot_handler
+      Runtime: nodejs20.x
+      Events:
+        HTTP:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
+      Environment:
+        Variables:
+          TELEGRAM_BOT_TOKEN: 
+          WEBHOOK_URL:
+
+Outputs:
+  APIEndpoint:
+    Description: "API Gateway endpoint URL for a telegram bot - Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
